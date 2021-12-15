@@ -8,7 +8,7 @@ I'm going to use this behind reverse proxy to get SSL support and don't know yet
 
 1. `git clone https://github.com/EntropyRy/Lychee-Docker` // clone this repo
 2. `cd Lychee-Docker` // go in the dir
-3. `git clone git@github.com:LycheeOrg/Lychee.git` // clone the actual sofware
+3. `git clone https://github.com/LycheeOrg/Lychee.git` // clone the actual sofware
 4. `cp .env.example .env` and change settings
 5. Change settings in `docker/fpm/php.ini` // Not sure if you even needed to change anything
 6. `cp Lychee/.env.example Lychee/.env` and change settings same as in `.env` // These are your actual Lychee settings
