@@ -1,0 +1,48 @@
+version: '3.2'
+
+networks:
+    front-tier:
+    back-tier:
+
+services:
+    db:
+        image: mariadb:10.5
+        restart: unless-stopped
+        networks:
+            - back-tier
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_USER: ${DB_USER}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - ./docker/data/db:/var/lib/mysql
+    fpm:
+        build:
+            context: docker/fpm
+            args:
+              UID: ${UID}
+              GID: ${GID}
+        restart: unless-stopped
+        networks:
+            - back-tier
+        volumes:
+            - ./Lychee:/var/www/html/lychee
+            - /etc/localtime:/etc/localtime:ro
+
+    web:
+        build: 
+            context: docker/nginx
+            args:
+              UID: ${UID}
+              GID: ${GID}
+        restart: unless-stopped
+        networks:
+            - back-tier
+            - front-tier
+        ports:
+            - "80:80"
+        links:
+            - fpm
+        volumes:
+            - ./Lychee/public:/var/www/html/lychee/public
