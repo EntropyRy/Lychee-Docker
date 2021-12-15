@@ -19,5 +19,5 @@ TIMESTAMP="${1:-$(date +%Y%m%d-%H%M%S)}"
 # varmista että backup-hakemisto on olemassa
 mkdir -p ${_DIR}/backup
 
-docker-compose exec db /usr/bin/mysqldump -u ${DB_USER} --password="${DB_PASSWORD}" ${DB_NAME} | gzip > ${_DIR}/backup/backup-${TIMESTAMP}.sql.gz
+/usr/local/bin/docker-compose exec db /usr/bin/mysqldump -u ${DB_USER} --password="${DB_PASSWORD}" ${DB_NAME} | gzip > ${_DIR}/backup/backup-${TIMESTAMP}.sql.gz
 
