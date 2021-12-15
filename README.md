@@ -32,6 +32,10 @@ import
 2. `./docker/db-import.sh /docker/backup/file.sql`
 3. `docker-compose restart db`
 
+# Running artisan
+
+1. `docker-compose exec fpm ./artisan`
+
 # Upgrade
 
 Coming soon but should be same as upgrade in Lychee docs: git pull, compsoser install
