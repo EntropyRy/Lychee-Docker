@@ -12,8 +12,8 @@ I'm going to use this behind reverse proxy to get SSL support and don't know yet
 4. `cp .env.example .env` and change settings
 5. Change settings in `docker/fpm/php.ini` // Not sure if you even needed to change anything
 6. `cp Lychee/.env.example Lychee/.env` and change settings same as in `.env` // These are your actual Lychee settings
-    6.1. `DB_CONNECTION` is `mysql`, `DB_HOST` is `db` and port `3306`
-    6.2. You can change `CACHE_DRIVER` and `SESSION_DRIVER` as `apc`
+    1. `DB_CONNECTION` is `mysql`, `DB_HOST` is `db` and port `3306`
+    2. You can change `CACHE_DRIVER` and `SESSION_DRIVER` as `apc`
 7. run `docker-compose build; docker-compose up -d` // build and start the docker containers
 8. visit http://localhost // to see if everything is working
 9. run `docker-compose exec fpm php -d memory_limit=-1 /usr/bin/composer.phar install` // to install depencies
