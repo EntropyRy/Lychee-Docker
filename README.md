@@ -19,6 +19,19 @@ I'm going to use this behind reverse proxy to get SSL support and don't know yet
 9. run `docker-compose exec fpm php -d memory_limit=-1 /usr/bin/composer.phar install` // to install depencies
 10. finalize the setup in http://localhost
 
+# DB backup and import
+
+backup
+
+1. `cp .env docker/`
+2. `./docker/db-backup.sh`
+
+import
+
+1. `gzip -d /docker/backup/file.sql.gz`
+2. `./docker/db-import.sh /docker/backup/file.sql`
+3. `docker-compose restart db`
+
 # Upgrade
 
 Coming soon but should be same as upgrade in Lychee docs: git pull, compsoser install
