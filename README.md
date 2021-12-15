@@ -16,7 +16,7 @@ I'm going to use this behind reverse proxy to get SSL support and don't know yet
     2. You can change `CACHE_DRIVER` and `SESSION_DRIVER` as `apc`
 7. run `docker-compose build; docker-compose up -d` // build and start the docker containers
 8. visit http://localhost // to see if everything is working
-9. run `docker-compose exec fpm php -d memory_limit=-1 /usr/bin/composer.phar install` // to install depencies
+9. run `docker-compose exec fpm php -d memory_limit=-1 /usr/bin/composer.phar install --no-dev --prefer-dist` // to install depencies
 10. finalize the setup in http://localhost
 
 # DB backup and import
