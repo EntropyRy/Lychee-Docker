@@ -4,10 +4,6 @@
 ## Import .sql file to MariaDB container. Reverse of mysqldump.
 ##
 
-# TODO:
-# - kovakoodattu kontin nimi :(
-# - varmista, että kontti on käynnissä -> ystävällinen virheviesti?
-
 # abort on all errors
 set -o errexit
 # return exit code of last failed command
