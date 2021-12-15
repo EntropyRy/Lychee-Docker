@@ -41,7 +41,7 @@ services:
             - back-tier
             - front-tier
         ports:
-            - "80:80"
+            - "${WEB_PORT}:80"
         links:
             - fpm
         volumes:
