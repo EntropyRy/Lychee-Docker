@@ -21,8 +21,8 @@ services:
         build:
             context: docker/fpm
             args:
-              UID: ${UID}
-              GID: ${GID}
+              UID: ${USERID}
+              GID: ${GROUPID}
         restart: unless-stopped
         networks:
             - back-tier
@@ -34,8 +34,8 @@ services:
         build: 
             context: docker/nginx
             args:
-              UID: ${UID}
-              GID: ${GID}
+              UID: ${USERID}
+              GID: ${GROUPID}
         restart: unless-stopped
         networks:
             - back-tier
