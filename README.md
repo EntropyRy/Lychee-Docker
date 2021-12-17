@@ -2,7 +2,7 @@
 
 PHP 8.1, MariaDB 10.5 and Nginx 1.19, Easy setup with docker-compose.
 
-I'm going to use this behind reverse proxy to get SSL support and don't know yet if some config for that is still needed.
+Can be used behind reverse proxy to use SSL. in this case `SECURITY_HEADER_HSTS_ENABLE` should be set to true in Lychee env settings
 
 # Setup
 
