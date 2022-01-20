@@ -1,4 +1,4 @@
-FROM nginx:1.19-alpine
+FROM nginx:mainline-alpine
 ARG GID
 ARG UID
 RUN rm -rf /var/cache/apk/* && rm -rf /tmp/* && rm /etc/nginx/conf.d/default.conf
