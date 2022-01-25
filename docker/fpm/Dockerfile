@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-alpine
+FROM php:8.1.1-fpm-alpine
 ARG GID
 ARG UID
 RUN apk upgrade --update && apk add --no-cache zlib-dev icu-dev libev libmcrypt-dev libzip-dev autoconf \
