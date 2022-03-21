@@ -1,4 +1,4 @@
-FROM php:8.1.1-fpm-alpine
+FROM php:8.1-fpm-alpine
 ARG GID
 ARG UID
 RUN apk upgrade --update && apk add --no-cache zlib-dev icu-dev libev libmcrypt-dev libzip-dev autoconf \
@@ -8,7 +8,7 @@ RUN apk upgrade --update && apk add --no-cache zlib-dev icu-dev libev libmcrypt-
     && addgroup -g $GID -S lychee && adduser -u $UID -D -S -G lychee lychee \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install intl exif iconv bcmath pdo_mysql opcache zip sockets mysqli \
+    && docker-php-ext-install intl exif bcmath pdo_mysql opcache zip sockets mysqli \
     && pecl channel-update pecl.php.net \
     && pecl install apcu imagick \
     && docker-php-ext-enable apcu imagick \
