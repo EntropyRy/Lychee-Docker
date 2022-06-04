@@ -1,5 +1,5 @@
 #!/bin/bash
-dc=$(which docker-compose)
+dc=$(docker compose)
 
 touch ./Lychee/.NO_AUTO_COMPOSER_MIGRATE;
 $dc build --pull;
