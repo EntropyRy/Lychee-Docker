@@ -39,4 +39,4 @@ import
 
 # Upgrade
 
-Coming soon but should be same as upgrade in Lychee docs: git pull, compsoser install
+run `./update.sh`
