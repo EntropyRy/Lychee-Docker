@@ -1,13 +1,12 @@
 version: "3.2"
-
 networks:
   front-tier:
   back-tier:
-
 services:
   db:
     image: mariadb:10.6
     restart: unless-stopped
+    user: ${USERID}:${GROUPID}
     networks:
       - back-tier
     environment:
@@ -30,7 +29,6 @@ services:
     volumes:
       - ./Lychee:/var/www/html/lychee
       - /etc/localtime:/etc/localtime:ro
-
   web:
     build:
       context: docker/nginx
