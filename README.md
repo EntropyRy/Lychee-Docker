@@ -1,6 +1,6 @@
 # Docker-compose for Lychee 
 
-PHP 8.1, MariaDB 10.5 and Nginx mainline, Easy setup with docker-compose.
+Latest PHP, MariaDB LTS and Nginx mainline, Easy setup with docker-compose.
 
 Can be used behind reverse proxy to use SSL. in this case `SECURITY_HEADER_HSTS_ENABLE` should be set to true in Lychee env settings
 
