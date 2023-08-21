@@ -46,8 +46,7 @@ RUN apk upgrade --update \
         icu-dev \
     && addgroup -g $GID -S lychee && adduser -u $UID -D -S -G lychee lychee \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install intl exif bcmath pdo_mysql opcache zip sockets mysqli \
+    && docker-php-ext-install -j$(nproc) gd intl exif bcmath pdo_mysql opcache zip sockets \
     && pecl channel-update pecl.php.net \
     && pecl install apcu imagick \
     && docker-php-ext-enable apcu imagick \
