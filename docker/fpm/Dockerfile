@@ -1,10 +1,49 @@
 FROM php:8.2-fpm-alpine
 ARG GID
 ARG UID
-RUN apk upgrade --update && apk add --no-cache zlib-dev icu-dev libev libmcrypt-dev libzip-dev autoconf \
-    libjpeg libpng libpng-dev libltdl libxml2-dev libzip-dev libjpeg-turbo-dev freetype-dev gnupg curl \
-    bash grep oniguruma-dev build-base tar re2c make file git exiftool ffmpeg jpegoptim optipng pngquant gifsicle \
-    libwebp libwebp-tools composer imagemagick-dev imagemagick linux-headers libwebp-dev \
+RUN apk upgrade --update \
+    && apk add --no-cache \
+        libev \
+        libjpeg \
+        libpng \
+        libltdl \
+        gnupg \
+        curl \
+        exiftool \
+        ffmpeg \
+        jpegoptim \
+        optipng \
+        pngquant \
+        gifsicle \
+        libwebp \
+        libwebp-tools \
+        composer \
+        imagemagick \
+        icu \
+        icu-data-full \
+    && apk add --virtual build-deps \
+        linux-headers \
+        bash \
+        grep \
+        tar \
+        re2c \
+        make \
+        file \
+        git \
+        oniguruma-dev \
+        build-base \
+        libwebp-dev \
+        imagemagick-dev \
+        libmcrypt-dev \
+        libzip-dev \
+        autoconf \
+        libpng-dev \
+        libxml2-dev \
+        libzip-dev \
+        libjpeg-turbo-dev \
+        freetype-dev \
+        zlib-dev \
+        icu-dev \
     && addgroup -g $GID -S lychee && adduser -u $UID -D -S -G lychee lychee \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) gd \
@@ -12,8 +51,7 @@ RUN apk upgrade --update && apk add --no-cache zlib-dev icu-dev libev libmcrypt-
     && pecl channel-update pecl.php.net \
     && pecl install apcu imagick \
     && docker-php-ext-enable apcu imagick \
-    && apk del --no-cache grep build-base tar re2c make file git oniguruma-dev libmcrypt-dev libzip-dev \
-        libpng-dev libxml2-dev libzip-dev libjpeg-turbo-dev linux-headers libwebp-dev \
+    && apk del build-deps \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
 
