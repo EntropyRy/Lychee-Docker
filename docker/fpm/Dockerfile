@@ -59,4 +59,3 @@ USER lychee
 WORKDIR /var/www/html/lychee
 CMD ["php-fpm", "-F"]
 EXPOSE 9000
-
