@@ -2,6 +2,7 @@
 dc='docker compose'
 
 touch ./Lychee/.NO_AUTO_COMPOSER_MIGRATE;
+$dc pull;
 $dc build --pull;
 $dc up -d;
 cd Lychee;
