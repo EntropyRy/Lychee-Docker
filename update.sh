@@ -9,3 +9,5 @@ git pull;
 cd ..;
 $dc exec fpm /usr/bin/composer.phar install -o --no-dev --prefer-dist;
 $dc exec fpm ./artisan migrate --force
+$dc run --rm node npm install
+$dc run --rm node npm run build

@@ -21,6 +21,7 @@ RUN apk upgrade --update \
         imagemagick \
         icu \
         icu-data-full \
+        rsync \
     && apk add --virtual build-deps \
         linux-headers \
         bash \
