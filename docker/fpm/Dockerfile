@@ -1,8 +1,8 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.4-fpm-alpine
 ARG GID
 ARG UID
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-RUN chmod +x /usr/local/bin/install-php-extensions
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
 RUN apk upgrade --update \
     && apk add --no-cache \
         libev \
@@ -50,8 +50,7 @@ RUN apk upgrade --update \
     && addgroup -g $GID -S lychee && adduser -u $UID -D -S -G lychee lychee \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) mysqli gd intl exif bcmath pdo_mysql opcache zip sockets \
-    && install-php-extensions https://api.github.com/repos/Imagick/imagick/tarball/28f27044e435a2b203e32675e942eb8de620ee58 \
-    && install-php-extensions apcu \
+    && install-php-extensions apcu imagick \
     && docker-php-ext-enable apcu imagick \
     && apk del build-deps \
     && rm -rf /var/cache/apk/* \
