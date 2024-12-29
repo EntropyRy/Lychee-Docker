@@ -45,7 +45,7 @@ services:
     volumes:
       - ./Lychee/public:/var/www/html/lychee/public
   node:
-    image: node:21-alpine
+    image: node:22-alpine
     volumes:
       - ./Lychee:/app
     working_dir: /app
