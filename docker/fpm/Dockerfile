@@ -1,4 +1,4 @@
-FROM php:8.4-fpm-alpine
+FROM php:8.5-fpm-alpine
 ARG GID
 ARG UID
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
@@ -49,7 +49,7 @@ RUN apk upgrade --update \
         icu-dev \
     && addgroup -g $GID -S lychee && adduser -u $UID -D -S -G lychee lychee \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
-    && docker-php-ext-install -j$(nproc) mysqli gd intl exif bcmath pdo_mysql opcache zip sockets \
+    && docker-php-ext-install -j$(nproc) mysqli gd intl exif bcmath pdo_mysql zip sockets \
     && install-php-extensions apcu imagick \
     && docker-php-ext-enable apcu imagick \
     && apk del build-deps \
