@@ -50,8 +50,8 @@ RUN apk upgrade --update \
     && addgroup -g $GID -S lychee && adduser -u $UID -D -S -G lychee lychee \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) mysqli gd intl exif bcmath pdo_mysql zip sockets \
-    && install-php-extensions apcu imagick \
-    && docker-php-ext-enable apcu imagick \
+    && install-php-extensions apcu imagick ldap \
+    && docker-php-ext-enable apcu imagick ldap \
     && apk del build-deps \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/* \
